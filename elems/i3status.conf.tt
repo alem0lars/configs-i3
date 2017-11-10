@@ -28,6 +28,12 @@ order += "keyboard_layout"
 
 # WIDGETS PARAMETERS ###########################################################
 
+spotify {
+  format = "{artist}∘{title}"
+  format_down = ""
+  format_stopped = ""
+}
+
 group netinfo {
   cycle = 0
 
