@@ -1,0 +1,8 @@
+elems:
+
+  - src:  ^(config)$
+    dst:  ~/.config/i3/config
+    only: f?i3
+
+
+# vim: set filetype=eruby.yaml :

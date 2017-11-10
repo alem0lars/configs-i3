@@ -1,0 +1,306 @@
+# i3 config file
+
+# VARIABLES ####################################################################
+
+# Set modifier key
+set $mod Mod4
+
+# Set font
+set $font pango:Hack 16
+
+# STARTUP ######################################################################
+
+# Execute command on i3 startup (excluding restarts)
+exec openterm --no-tmux --cmd startup-setup
+
+# LAYOUTS ######################################################################
+
+# Default workspace layout
+workspace_layout tabbed
+
+# Default orientation for new workspaces
+default_orientation auto
+
+# When a application is in fullscreen mode and some applications open popup
+# windows, display the popup if it belongs to the fullscreen application only
+popup_during_fullscreen smart
+
+# When being in a tabbed or stacked container, the first container will be
+# focused when you use focus down on the last container, the focus wraps. If
+# however there is another stacked/tabbed container in that direction, focus
+# will be set on that container (so you can navigate to all your windows without
+# having to use focus parent)
+force_focus_wrapping no
+
+# Don't force xinerama
+force_xinerama no
+
+# Switching multiple times on the same workspace doesn't do anything
+workspace_auto_back_and_forth no
+
+# Delay resetting the urgency state to be able to know better which window
+# originally raised the event
+force_display_urgency_hint 512 ms
+
+# If the window requesting focus is on an active workspace, it will receive the
+# focus; otherwise, the urgency hint will be set
+focus_on_window_activation smart
+
+# XORG RULES ###################################################################
+
+# Set windows that should be floating by default
+for_window [class="^Pavucontrol$"] floating enable
+for_window [class="^copyq$"]       floating enable
+
+# Assign windows to particular workspaces
+assign [class="^Firefox$"]                   → 1
+assign [class="^chromium-browser-chromium$"] → 1
+assign [class="^Slack$"]                     → 6
+assign [class="^Thunderbird$"]               → 6
+
+# BAR ##########################################################################
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  # GENERIC ####################################################################
+
+  status_command i3status
+  i3bar_command /usr/bin/i3bar
+
+  # ITEMS ######################################################################
+
+  # Show workspace buttons
+  workspace_buttons yes
+
+  # Don't show numbers if workspace name is available
+  strip_workspace_numbers yes
+
+  # Show binding mode indicator
+  binding_mode_indicator yes
+
+  # POSITIONING ################################################################
+
+  # Which screen the tray icons should be displayed
+  tray_output primary
+
+  # Bar position
+  position top
+
+  # How bar should be shown
+  mode dock
+
+  # APPEARANCE #################################################################
+
+  # Font
+  font $font
+
+  # Spacing between each tray icon
+  tray_padding 4 px
+
+  # Separator symbol
+  separator_symbol " | "
+
+  # Colors
+  colors {
+    background #000000
+    statusline #ffffff
+    separator #666666
+
+    # class            border   background  text
+    focused_workspace  #4c7899  #285577     #ffffff
+    active_workspace   #333333  #5f676a     #ffffff
+    inactive_workspace #333333  #222222     #888888
+    urgent_workspace   #2f343a  #900000     #ffffff
+    binding_mode       #2f343a  #900000     #ffffff
+  }
+}
+
+# APPEARANCE ###################################################################
+
+# Font for window titles (will also be used by the bar unless a different font
+# is used in the bar)
+font $font
+
+# Hide container borders on workspaces with only one window visible
+hide_edge_borders smart
+
+# Enable window decorations
+show_marks yes
+
+# Colors
+client.background #ffffff
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# MOUSE ########################################################################
+
+# Prevent focus from following mouse
+focus_follows_mouse no
+
+# When switching focus to a window on a different screen, disable mouse warping
+mouse_warping none
+
+# HOTKEYS ######################################################################
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start a terminal
+# => with terminal multiplexer
+bindsym $mod+Return exec openterm
+# => without terminal multiplexer
+bindsym $mod+Shift+Return exec openterm --no-tmux
+
+# Kill focused window
+bindsym $mod+Shift+c kill
+
+# Start program launcher
+bindsym $mod+p exec dmenu_run
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Restart i3 inplace (preserves layout/session)
+bindsym $mod+q restart
+
+# Exit i3 (logout of X session)
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Toggle sticky on focused window
+bindsym $mod+s sticky toggle
+
+# Change focus
+# => with vi keys
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# => with cursor keys
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+# => with vi keys
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# => with cursor keys
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Move to screen
+# => with vi keys
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output down
+bindsym $mod+Control+k move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+# => with cursor keys
+bindsym $mod+Control+Left  move workspace to output left
+bindsym $mod+Control+Down  move workspace to output down
+bindsym $mod+Control+Up    move workspace to output up
+bindsym $mod+Control+Right move workspace to output right
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Toggle tiling / floating
+bindsym $mod+t floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+Shift+t focus mode_toggle
+
+# Switch back and forth
+bindsym $mod+a workspace back_and_forth
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Mode for window resizing
+mode "resize" {
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Mode for advanced focus
+mode "focus" {
+  # Focus the parent container
+  bindsym q focus parent
+
+  # Focus the child container
+  bindsym e focus child
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+bindsym $mod+w mode "focus"
+
+# Mode for changing layout
+mode "layout" {
+  # Change container layout
+  # => toggle tabbed
+  bindsym q layout toggle tabbed
+  # => toggle stacking
+  bindsym w layout toggle stacking
+  # => toggle split
+  bindsym e layout toggle split
+  # => toggle all
+  bindsym d layout toggle tabbed stacking split
+
+  # Change orientation
+  # => vertical
+  bindsym a split v
+  # => horizontal
+  bindsym s split h
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+bindsym $mod+d mode "layout"
