@@ -1,0 +1,141 @@
+# i3status configuration file.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  colors = true
+  interval = 5
+}
+
+# ORDER ########################################################################
+
+order += "scratchpad_counter"
+order += "taskwarrior" # TODO
+order += "spotify" # TODO
+order += "online_status"
+order += "group netinfo" # TODO
+order += "group disks" # TODO
+order += "group system" # TODO
+order += "backlight"
+order += "battery_level"
+order += "uptime"
+order += "clock"
+order += "volume_status"
+order += "keyboard_layout"
+
+# WIDGETS PARAMETERS ###########################################################
+
+group netinfo {
+  cycle = 0
+
+  click_mode = "all"
+  button_next = 1
+  button_prev = 3
+
+  format = "⇅ {output} {button}"
+  format_button_closed = "⇅"
+  format_button_open = "✗"
+
+  whatismyip {}
+  wifi {}
+  net_rate {
+    hide_if_zero = True
+
+    format = "{interface} ⇅ {total}"
+    format_value = "{value:.1f} {unit}"
+  }
+}
+
+group disks {
+  cycle = 0
+
+  click_mode = "all"
+  button_next = 1
+  button_prev = 3
+
+  format = "⛁ {output} {button}"
+  format_button_closed = "⛁"
+  format_button_open = "✗"
+
+  disk "/" {
+    format = "/ %avail"
+  }
+
+  disk "/data" {
+    format = "/data %avail"
+  }
+
+  disk "/vm" {
+    format = "/vm %avail"
+  }
+}
+
+group disks {
+  cycle = 0
+
+  click_mode = "all"
+  button_next = 1
+  button_prev = 3
+
+  format = "⚛ {output} {button}"
+  format_button_closed = "⚛"
+  format_button_open = "✗"
+
+  sysdata {}
+  nvidia_temp {
+    format = "GPU {format_temp}"
+  }
+}
+
+backlight {
+  format = "☼{level}%"
+}
+
+battery_level {
+  hide_when_full = True
+  notify_low_level = True
+  format = "{icon}{percent}%"
+  format_notify_charging = "{icon}{percent}%≈{time_remaining}"
+  format_notify_discharging = "{icon}{percent}%≈{time_remaining}"
+}
+
+uptime {
+  format = "↻[\?if=weeks {weeks}w][\?if=days {days}d][\?if=hours {hours}h][\?if=minutes {minutes}m]"
+}
+
+clock {
+  cycle = 10
+  format = "{Local}"
+  format_time = "%Y-%m-%d %H:%M:%S"
+}
+
+keyboard_layout {
+  format = "⌨ {layout}"
+}
+
+volume_status {
+  button_up = 4
+  button_down = 5
+  button_mute = 2
+
+  command = "pactl"
+
+  format = "♪ {percentage}%"
+  format_muted = "♪ ∅"
+
+  thresholds = [
+    (0, "#FF0000"),
+    (10, "#E2571E"),
+    (20, "#FF7F00"),
+    (30, "#FFFF00"),
+    (40, "#00FF00"),
+    (50, "#96BF33"),
+    (60, "#0000FF"),
+    (70, "#4B0082"),
+    (80, "#8B00FF"),
+    (90, "#FFFFFF")
+  ]
+}

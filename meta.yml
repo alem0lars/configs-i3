@@ -1,7 +1,11 @@
 elems:
 
   - src:  ^(config)$
-    dst:  ~/.config/i3/config
+    dst:  /etc/i3/config
+    only: f?i3
+
+  - src:  ^(i3status.conf)$
+    dst:  /etc/i3status.conf
     only: f?i3
 
 

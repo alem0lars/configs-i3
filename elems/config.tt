@@ -65,8 +65,7 @@ assign [class="^Thunderbird$"]               → 6
 bar {
   # GENERIC ####################################################################
 
-  status_command i3status
-  i3bar_command /usr/bin/i3bar
+  status_command py3status
 
   # ITEMS ######################################################################
 
@@ -99,13 +98,13 @@ bar {
   tray_padding 4 px
 
   # Separator symbol
-  separator_symbol " | "
+  separator_symbol "│"
 
   # Colors
   colors {
-    background #000000
-    statusline #ffffff
-    separator #666666
+    background #202020
+    statusline #aaaaaa
+    separator #000000
 
     # class            border   background  text
     focused_workspace  #4c7899  #285577     #ffffff
