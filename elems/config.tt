@@ -287,13 +287,15 @@ bindsym $mod+w mode "focus"
 mode "layout" {
   # Change container layout
   # => toggle tabbed
-  bindsym q layout toggle tabbed
+  bindsym q layout tabbed
   # => toggle stacking
-  bindsym w layout toggle stacking
-  # => toggle split
-  bindsym e layout toggle split
+  bindsym w layout stacking
+  # => toggle split vertical
+  bindsym e layout splitv
+  # => toggle split horizontal
+  bindsym r layout splith
   # => toggle all
-  bindsym d layout toggle tabbed stacking split
+  bindsym d layout toggle all
 
   # Change orientation
   # => vertical
