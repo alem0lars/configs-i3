@@ -56,6 +56,7 @@ for_window [class="^copyq$"]       floating enable
 assign [class="^Firefox$"]                   → 1
 assign [class="^chromium-browser-chromium$"] → 1
 assign [class="^trello"]                     → 5
+assign [class="^toggl"]                      → 5
 assign [class="^whatsapp"]                   → 6
 assign [class="^TelegramDesktop$"]           → 6
 assign [class="^skypeforlinux$"]             → 6
