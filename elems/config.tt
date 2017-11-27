@@ -51,6 +51,7 @@ focus_on_window_activation smart
 # Set windows that should be floating by default
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^copyq$"]       floating enable
+for_window [class="^Speedcrunch"]  floating enable
 
 # Assign windows to particular workspaces
 assign [class="^Firefox$"]                   → 1
@@ -312,3 +313,6 @@ mode "layout" {
   bindsym Return mode "default"
 }
 bindsym $mod+d mode "layout"
+
+# Special keys
+bindsym XF86Calculator exec speedcrunch
