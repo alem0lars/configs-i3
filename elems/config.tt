@@ -167,7 +167,9 @@ bindsym $mod+Shift+Return exec openterm --no-tmux
 bindsym $mod+Shift+c kill
 
 # Start program launcher
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p   exec rofi -show
+# Start window chooser
+bindsym $mod+Tab exec rofi -show window
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
