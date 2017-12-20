@@ -1,19 +1,88 @@
-# i3 config file
+# ─────────────────────────────────────────────────────────────────────────────┐
+#                                                                              │
+# Name:    elems/config.tt                                                     │
+# Summary: i3 configuration.                                                   │
+# Authors:                                                                     │
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              │
+#                                                                              │
+# Project:                                                                     │
+#   - Homepage:        https://github.com/alem0lars/configs-i3                 │
+#   - Getting started: see README.md in the project root folder                │
+#                                                                              │
+# License: Apache v2.0 (see below)                                             │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+#                                                                              │
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  │
+# license agreements.  See the NOTICE file distributed with this work for      │
+# additional information regarding copyright ownership. The ASF licenses this  │
+# file to you under the Apache License, Version 2.0 (the "License"); you may   │
+# not use this file except in compliance with the License.                     │
+# You may obtain a copy of the License at                                      │
+#                                                                              │
+#   http://www.apache.org/licenses/LICENSE-2.0                                 │
+#                                                                              │
+# Unless required by applicable law or agreed to in writing, software          │
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    │
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             │
+# See the License for the specific language governing permissions and          │
+# limitations under the License.                                               │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+<%
+  define_locals do
+    variable "i3.mod_key", as: :mod_key
+    variable "i3.colorscheme", as: :colorscheme
+    variable "i3.terminal", as: :terminal
+    variable "i3.terminal_no_multiplexer", as: :terminal_no_multiplexer
+    variable "i3.startup_cmd", as: :startup_cmd
+    variable "i3.xkill_cmd", as: :xkill_cmd
+    variable "i3.launcher_cmd", as: :launcher_cmd
+    variable "i3.window_chooser_cmd", as: :window_chooser_cmd
+    variable "i3.calc_cmd", as: :calc_cmd
+    variable "i3.brightness_inc_cmd", as: :brightness_inc_cmd
+    variable "i3.brightness_dec_cmd", as: :brightness_dec_cmd
 
-# VARIABLES ####################################################################
+    variable "font.name", as: :font_name
+    variable "font.size", as: :font_size
+
+    variable "pulseaudio.default_sink", as: :pa_sink
+  end
+
+  def notify_and_exec(msg, cmd)
+    "notify-send '#{msg}'; #{cmd}"
+  end
+
+  def colorscheme_for_class(name)
+    data = local!(:colorscheme)[name]
+    [
+      data[:border],
+      data[:bg],
+      data[:fg],
+      data[:indicator],
+      data[:child_border]
+    ].join(" ")
+  end
+%>
+# ─────────────────────────────────────────────────────────────────────────────┘
+
+
+# ───────────────────────────────────────────────────────────────── Variables ──
 
 # Set modifier key
-set $mod Mod4
+set $mod <%= local! :mod_key %>
 
 # Set font
-set $font pango:Hack 16
+set $font pango:<%= local! :font_name %> <%= local! :font_size %>
 
-# STARTUP ######################################################################
+# ─────────────────────────────────────────────────────────────────── Startup ──
 
 # Execute command on i3 startup (excluding restarts)
-exec openterm --no-tmux --cmd startup-setup
+<% if local? :startup_cmd %>
+exec <%= local! :startup_cmd %>
+<% end %>
 
-# LAYOUTS ######################################################################
+# ─────────────────────────────────────────────────────────────────── Layouts ──
 
 # Default workspace layout
 workspace_layout tabbed
@@ -46,7 +115,7 @@ force_display_urgency_hint 512 ms
 # focus; otherwise, the urgency hint will be set
 focus_on_window_activation smart
 
-# XORG RULES ###################################################################
+# ─────────────────────────────────────────────────────────────────── X rules ──
 
 # Set windows that should be floating by default
 for_window [class="^Pavucontrol$"] floating enable
@@ -66,16 +135,16 @@ assign [class="^Slack$"]                     → 6
 assign [class="^Thunderbird$"]               → 6
 assign [class="^VirtualBox$"]                → 10
 
-# BAR ##########################################################################
+# ─────────────────────────────────────────────────────────────────────── Bar ──
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  # GENERIC ####################################################################
+  # ─────────────────────────────────────────────────────────── Generic ← Bar ──
 
   status_command py3status
 
-  # ITEMS ######################################################################
+  # ───────────────────────────────────────────────────────────── Items ← Bar ──
 
   # Show workspace buttons
   workspace_buttons yes
@@ -86,7 +155,7 @@ bar {
   # Show binding mode indicator
   binding_mode_indicator yes
 
-  # POSITIONING ################################################################
+  # ─────────────────────────────────────────────────────── Positioning ← Bar ──
 
   # Which screen the tray icons should be displayed
   tray_output primary
@@ -97,7 +166,7 @@ bar {
   # How bar should be shown
   mode dock
 
-  # APPEARANCE #################################################################
+  # ──────────────────────────────────────────────────────── Appearance ← Bar ──
 
   # Font
   font $font
@@ -123,7 +192,7 @@ bar {
   }
 }
 
-# APPEARANCE ###################################################################
+# ──────────────────────────────────────────────────────────────── Appearance ──
 
 # Font for window titles (will also be used by the bar unless a different font
 # is used in the bar)
@@ -136,15 +205,14 @@ hide_edge_borders smart
 show_marks yes
 
 # Colors
-client.background #ffffff
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       <%= local!(:colorscheme)[:bg] %>
+client.focused          <%= colorscheme_for_class :focused %>
+client.focused_inactive <%= colorscheme_for_class :focused_inactive %>
+client.unfocused        <%= colorscheme_for_class :unfocused %>
+client.urgent           <%= colorscheme_for_class :urgent %>
+client.placeholder      <%= colorscheme_for_class :placeholder %>
 
-# MOUSE ########################################################################
+# ───────────────────────────────────────────────────────────────────── Mouse ──
 
 # Prevent focus from following mouse
 focus_follows_mouse no
@@ -152,24 +220,26 @@ focus_follows_mouse no
 # When switching focus to a window on a different screen, disable mouse warping
 mouse_warping none
 
-# HOTKEYS ######################################################################
+# ─────────────────────────────────────────────────────────────── Keybindings ──
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Start a terminal
 # => with terminal multiplexer
-bindsym $mod+Return exec openterm
+bindsym $mod+Return exec <%= local! :terminal %>
 # => without terminal multiplexer
-bindsym $mod+Shift+Return exec openterm --no-tmux
+bindsym $mod+Shift+Return exec <%= local! :terminal_no_multiplexer %>
 
 # Kill focused window
 bindsym $mod+Shift+c kill
+# Prompt to kill X window
+bindsym $mod+Shift+Alt+c exec <%= local! :xkill_cmd %>
 
 # Start program launcher
-bindsym $mod+p   exec rofi -show
+bindsym $mod+p   exec <%= local! :launcher_cmd %>
 # Start window chooser
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Tab exec <%= local! :window_chooser_cmd %>
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
@@ -316,5 +386,102 @@ mode "layout" {
 }
 bindsym $mod+d mode "layout"
 
-# Special keys
-bindsym XF86Calculator exec speedcrunch
+# ───────────────────────────────────────────────────── Special ← Keybindings ──
+
+# ────────────────────────────────────────────── Calc ← Special ← Keybindings ──
+
+<% if local? :calc_cmd %>
+bindsym XF86Calculator exec <%= local! :calc_cmd %>
+<% end %>
+
+# ───────────────────────────────────────────── Audio ← Special ← Keybindings ──
+
+<% if local? :pa_sink %>
+
+bindsym XF86AudioLowerVolume exec <%= notify_and_exec(
+  "Decreasing audio volume",
+  "pactl set-sink-volume #{local! :pa_sink} -5%"
+) %>
+
+bindsym XF86AudioRaiseVolume exec <%= notify_and_exec(
+  "Increasing audio volume",
+  "pactl set-sink-volume #{local! :pa_sink} +5%"
+) %>
+
+bindsym XF86AudioMute exec <%= notify_and_exec(
+  "Toggling audio mute",
+  "pactl set-sink-mute #{local! :pa_sink} toggle"
+) %>
+
+<% end %>
+
+# ─────────────────────────────────────── Mediaplayer ← Special ← Keybindings ──
+
+# ──────────────────────────────────────── Brightness ← Special ← Keybindings ──
+
+# Increase screen brightness
+<% if local? :brightness_inc_cmd %>
+bindsym XF86MonBrightnessUp exec <%= notify_and_exec(
+  "Increasing brightness level",
+  local!(:brightness_inc_cmd)
+) %>
+<% end %>
+
+# Decrease screen brightness
+<% if local? :brightness_dec_cmd %>
+bindsym XF86MonBrightnessDown exec <%= notify_and_exec(
+  "Decreasing brightness level",
+  local!(:brightness_dec_cmd)
+) %>
+<% end %>
+
+# TODO
+# , ( (0, XF86.xF86XK_AudioPlay)
+#   , spawnAndNotify "playerctl play-pause"
+#                    "Toggling play/pause"
+#   , "Toggle play/pause state (in default media-player)"
+#   )
+# , ( (0, XF86.xF86XK_AudioPrev)
+#   , spawnAndNotify "playerctl previous"
+#                    "Playing previous track"
+#   , "Play previous track (in default media-player)"
+#   )
+# , ( (0, XF86.xF86XK_AudioNext)
+#   , spawnAndNotify "playerctl next"
+#                    "Playing next track"
+#   , "Play next track (in default media-player)"
+#   )
+#   -- ───────────────────────────────────────── keyboard •2.09.08• ──┤
+# , ( (metaMask, xK_F2)
+#   , spawnAndNotify "setxkbmap <\%= local! :kb_layout_main %>"
+#                    "keyboard layout changed back to main: <\%= local! :kb_layout_main %>"
+#   , "Change keyboard layout back to main " ++
+#     "(<\%= local! :kb_layout_main %>)"
+#   )
+# , ( (metaMask .|. shiftMask, xK_F2)
+#   , spawnAndNotify "setxkbmap <\%= local! :kb_layout_alt %>"
+#                    "keyboard layout changed to alternative: <\%= local! :kb_layout_alt %>"
+#   , "Change keyboard layout to alternative " ++
+#     "(<\%= local! :kb_layout_alt %>)"
+#   )
+#   -- ──────────────────────────────────── notifications •2.09.09• ──┤
+# , ( (metaMask, xK_F3)
+#   , spawnAndNotify "dunstctl --cmd resume" "resuming notifications"
+#   , "Resume notifications"
+#   )
+# , ( (metaMask .|. shiftMask, xK_F3)
+#   , spawnAndNotify "sleep 3; dunstctl --cmd pause" "pausing notifications"
+#   , "Pause notifications"
+#   )
+#   -- ───────────────────────────────────────────── lock •2.09.10• ──┤
+# , ( (metaMask, xK_F4)
+#   , spawnAndNotify "sleep 3; slock" "locking screen"
+#   , "Lock screen"
+#   )
+# , ( (metaMask .|. shiftMask, xK_F4)
+#   , spawnAndNotify "sleep 3; systemctl suspend; slock" "suspending"
+#   , "Suspend in RAM (and lock screen)"
+#   )
+
+
+# vim: set filetype=eruby.conf :

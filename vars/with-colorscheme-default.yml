@@ -1,0 +1,36 @@
+i3:
+  colorscheme:
+    bg: '#ffffff'
+    focused:
+      border: '#4c7899'
+      bg: '#285577'
+      fg: '#ffffff'
+      indicator: '#2e9ef4'
+      child_border: '#285577'
+    focused_inactive:
+      border: '#333333'
+      bg: '#5f676a'
+      fg: '#ffffff'
+      indicator: '#484e50'
+      child_border: '#5f676a'
+    unfocused:
+      border: '#333333'
+      bg: '#222222'
+      fg: '#888888'
+      indicator: '#292d2e'
+      child_border: '#222222'
+    urgent:
+      border: '#2f343a'
+      bg: '#900000'
+      fg: '#ffffff'
+      indicator: '#900000'
+      child_border: '#900000'
+    placeholder:
+      border: '#000000'
+      bg: '#0c0c0c'
+      fg: '#ffffff'
+      indicator: '#000000'
+      child_border: '#0c0c0c'
+
+
+# vim: set filetype=eruby.yaml :
