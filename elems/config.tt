@@ -134,6 +134,7 @@ assign [class="^skypeforlinux$"]             → 6
 assign [class="^Slack$"]                     → 6
 assign [class="^Thunderbird$"]               → 6
 assign [class="^Mumble$"]                    → 6
+assign [class="^Skype$"]                     → 6
 assign [class="^VirtualBox$"]                → 10
 
 # ─────────────────────────────────────────────────────────────────────── Bar ──
