@@ -1,5 +1,6 @@
 # => inherits: generic, with-colorscheme-default <= #
 
+hidpi: true
 
 i3:
   mod_key: Mod4
