@@ -8,7 +8,7 @@ i3:
   terminal_no_multiplexer: openterm --no-tmux
   startup_cmd: openterm --no-tmux --cmd startup-setup
   xkill_cmd: xkill
-  launcher_cmd: rofi -show
+  launcher_cmd: rofi -show run
   window_chooser_cmd: rofi -show window
   calc_cmd: speedcrunch
   brightness_inc_cmd: xbacklight -inc 20
