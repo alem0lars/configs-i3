@@ -88,7 +88,7 @@ set $font pango:<%= local! :font_name %> <%= local! :font_size %>
 
 # Execute command on i3 startup (excluding restarts)
 <% if local? :startup_cmd %>
-exec <%= local! :startup_cmd %>
+exec "<%= local! :startup_cmd %>"
 <% end %>
 
 # ─────────────────────────────────────────────────────────────────── Layouts ──
@@ -242,19 +242,19 @@ floating_modifier $mod
 
 # Start a terminal
 # => with terminal multiplexer
-bindsym $mod+Return exec <%= local! :terminal %>
+bindsym $mod+Return exec "<%= local! :terminal %>"
 # => without terminal multiplexer
-bindsym $mod+Shift+Return exec <%= local! :terminal_no_multiplexer %>
+bindsym $mod+Shift+Return exec "<%= local! :terminal_no_multiplexer %>"
 
 # Kill focused window
 bindsym $mod+Shift+c kill
 # Prompt to kill X window
-bindsym $mod+Shift+Alt+c exec <%= local! :xkill_cmd %>
+bindsym $mod+Shift+Alt+c exec "<%= local! :xkill_cmd %>"
 
 # Start program launcher
-bindsym $mod+p   exec <%= local! :launcher_cmd %>
+bindsym $mod+p exec "<%= local! :launcher_cmd %>"
 # Start window chooser
-bindsym $mod+Tab exec <%= local! :window_chooser_cmd %>
+bindsym $mod+Tab exec "<%= local! :window_chooser_cmd %>"
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
@@ -406,27 +406,27 @@ bindsym $mod+d mode "layout"
 # ────────────────────────────────────────────── Calc ← Special ← Keybindings ──
 
 <% if local? :calc_cmd %>
-bindsym XF86Calculator exec <%= local! :calc_cmd %>
+bindsym XF86Calculator exec "<%= local! :calc_cmd %>"
 <% end %>
 
 # ───────────────────────────────────────────── Audio ← Special ← Keybindings ──
 
 <% if local? :pa_sink %>
 
-bindsym XF86AudioLowerVolume exec <%= notify_and_exec(
+bindsym XF86AudioLowerVolume exec "<%= notify_and_exec(
   "Decreasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} -5%"
-) %>
+) %>"
 
-bindsym XF86AudioRaiseVolume exec <%= notify_and_exec(
+bindsym XF86AudioRaiseVolume exec "<%= notify_and_exec(
   "Increasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} +5%"
-) %>
+) %>"
 
-bindsym XF86AudioMute exec <%= notify_and_exec(
+bindsym XF86AudioMute exec "<%= notify_and_exec(
   "Toggling audio mute",
   "pactl set-sink-mute #{local! :pa_sink} toggle"
-) %>
+) %>"
 
 <% end %>
 
@@ -436,18 +436,18 @@ bindsym XF86AudioMute exec <%= notify_and_exec(
 
 # Increase screen brightness
 <% if local? :brightness_inc_cmd %>
-bindsym XF86MonBrightnessUp exec <%= notify_and_exec(
+bindsym XF86MonBrightnessUp "exec <%= notify_and_exec(
   "Increasing brightness level",
   local!(:brightness_inc_cmd)
-) %>
+) %>"
 <% end %>
 
 # Decrease screen brightness
 <% if local? :brightness_dec_cmd %>
-bindsym XF86MonBrightnessDown exec <%= notify_and_exec(
+bindsym XF86MonBrightnessDown "exec <%= notify_and_exec(
   "Decreasing brightness level",
   local!(:brightness_dec_cmd)
-) %>
+) %>"
 <% end %>
 
 # TODO

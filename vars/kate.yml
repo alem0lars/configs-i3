@@ -17,7 +17,7 @@ i3:
 
 font:
   name: Hack
-  size: 16
+  size: 8
 
 pulseaudio:
   default_sink: 1
