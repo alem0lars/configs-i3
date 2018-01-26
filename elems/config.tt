@@ -143,6 +143,7 @@ assign [class="^dynalist"]                   → 5
 assign [class="^toggl"]                      → 5
 assign [class="^whatsapp"]                   → 6
 assign [class="^TelegramDesktop$"]           → 6
+assign [class="^Caprine"]                    → 6
 assign [class="^skypeforlinux$"]             → 6
 assign [class="^Slack$"]                     → 6
 assign [class="^Thunderbird$"]               → 6
