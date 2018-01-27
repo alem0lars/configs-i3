@@ -129,7 +129,7 @@ focus_on_window_activation smart
 # Set windows that should be floating by default
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^copyq$"]       floating enable
-for_window [class="^Speedcrunch"]  floating enable
+for_window [class="^SpeedCrunch"]  floating enable
 for_window [class="^DevDocs$"]     floating enable, resize set <%= scale 1152 %> <%= scale 648 %>
 
 # Make all floating windows centered
@@ -139,7 +139,7 @@ for_window [class=".*"] move position center
 assign [class="^Firefox$"]                   → 1
 assign [class="^chromium-browser-chromium$"] → 1
 assign [class="^trello"]                     → 5
-assign [class="^dynalist"]                   → 5
+assign [class="^Dynalist"]                   → 5
 assign [class="^toggl"]                      → 5
 assign [class="^whatsapp"]                   → 6
 assign [class="^TelegramDesktop$"]           → 6
