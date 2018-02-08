@@ -131,6 +131,7 @@ for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^copyq$"]       floating enable
 for_window [class="^SpeedCrunch"]  floating enable
 for_window [class="^DevDocs$"]     floating enable, resize set <%= scale 1152 %> <%= scale 648 %>
+for_window [class="^Toggl Desktop$"] floating enable
 
 # Make all floating windows centered
 for_window [class=".*"] move position center

@@ -7,16 +7,13 @@
 
 general {
   colors = true
-  interval = 5
+  interval = 1
 }
 
 # ORDER ########################################################################
 
 order += "scratchpad_counter"
-order += "online_status"
-order += "group netinfo" # TODO
-order += "group disks" # TODO
-order += "group system" # TODO
+order += "group system"
 order += "backlight"
 order += "battery_level"
 order += "uptime"
@@ -26,19 +23,27 @@ order += "keyboard_layout"
 
 # WIDGETS PARAMETERS ###########################################################
 
-group netinfo {
+group system {
   cycle = 0
 
   click_mode = "all"
   button_next = 1
   button_prev = 3
 
-  format = "⇅ {output} {button}"
-  format_button_closed = "⇅"
+  format = "{output} {button}"
+  format_button_closed = "⚛"
   format_button_open = "✗"
 
-  whatismyip {}
-  wifi {}
+  sysdata {}
+
+  whatismyip {
+    format = "{icon} {ip} @ {country}"
+  }
+
+  wifi {
+    format = "{icon} {ssid} {bitrate} {signal_percent}|down"
+  }
+
   net_rate {
     hide_if_zero = True
 
@@ -47,58 +52,21 @@ group netinfo {
   }
 }
 
-group disks {
-  cycle = 0
-
-  click_mode = "all"
-  button_next = 1
-  button_prev = 3
-
-  format = "⛁ {output} {button}"
-  format_button_closed = "⛁"
-  format_button_open = "✗"
-
-  disk "/" {
-    format = "/ %avail"
-  }
-
-  disk "/data" {
-    format = "/data %avail"
-  }
-
-  disk "/vm" {
-    format = "/vm %avail"
-  }
-}
-
-group disks {
-  cycle = 0
-
-  click_mode = "all"
-  button_next = 1
-  button_prev = 3
-
-  format = "⚛ {output} {button}"
-  format_button_closed = "⚛"
-  format_button_open = "✗"
-
-  sysdata {}
-}
-
 backlight {
-  format = "☼{level}%"
+  format = "☼ {level}%"
 }
 
 battery_level {
   hide_when_full = True
   notify_low_level = True
-  format = "{icon}{percent}%"
+  cache_timeout = 1
+  format = "{icon} {percent}%"
   format_notify_charging = "{icon}{percent}%≈{time_remaining}"
   format_notify_discharging = "{icon}{percent}%≈{time_remaining}"
 }
 
 uptime {
-  format = "↻[\?if=weeks {weeks}w][\?if=days {days}d][\?if=hours {hours}h][\?if=minutes {minutes}m]"
+  format = "↻ [\?if=weeks {weeks}w][\?if=days {days}d][\?if=hours {hours}h][\?if=minutes {minutes}m]"
 }
 
 clock {
