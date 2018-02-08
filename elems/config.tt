@@ -51,7 +51,7 @@
   end
 
   def notify_and_exec(msg, cmd)
-    "notify-send '#{msg}'; #{cmd}"
+    "exec notify-send '#{msg}'; exec #{cmd}"
   end
 
   def colorscheme_for_class(name)
@@ -353,10 +353,10 @@ mode "resize" {
   bindsym semicolon resize grow width 10 px or 10 ppt
 
   # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left  resize shrink width  10 px or 10 ppt
+  bindsym Down  resize grow   height 10 px or 10 ppt
+  bindsym Up    resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow   width  10 px or 10 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -414,59 +414,58 @@ bindsym XF86Calculator exec "<%= local! :calc_cmd %>"
 
 <% if local? :pa_sink %>
 
-bindsym XF86AudioLowerVolume exec "<%= notify_and_exec(
+bindsym XF86AudioLowerVolume <%= notify_and_exec(
   "Decreasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} -5%"
-) %>"
+) %>
 
-bindsym XF86AudioRaiseVolume exec "<%= notify_and_exec(
+bindsym XF86AudioRaiseVolume <%= notify_and_exec(
   "Increasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} +5%"
-) %>"
+) %>
 
-bindsym XF86AudioMute exec "<%= notify_and_exec(
+bindsym XF86AudioMute <%= notify_and_exec(
   "Toggling audio mute",
   "pactl set-sink-mute #{local! :pa_sink} toggle"
-) %>"
+) %>
 
 <% end %>
 
-# ─────────────────────────────────────── Mediaplayer ← Special ← Keybindings ──
+# ─────────────────────────────────────── MediaPlayer ← Special ← Keybindings ──
+
+bindsym XF86AudioPlay <%= notify_and_exec(
+  "Toggling media play/pause",
+  "playerctl play-pause"
+) %>
+
+bindsym XF86AudioPrev <%= notify_and_exec(
+  "Playing previous track",
+  "playerctl previous"
+) %>
+
+bindsym XF86AudioNext <%= notify_and_exec(
+  "Playing next track",
+  "playerctl next"
+) %>
 
 # ──────────────────────────────────────── Brightness ← Special ← Keybindings ──
 
 # Increase screen brightness
 <% if local? :brightness_inc_cmd %>
-bindsym XF86MonBrightnessUp "exec <%= notify_and_exec(
+bindsym XF86MonBrightnessUp <%= notify_and_exec(
   "Increasing brightness level",
   local!(:brightness_inc_cmd)
-) %>"
+) %>
 <% end %>
 
 # Decrease screen brightness
 <% if local? :brightness_dec_cmd %>
-bindsym XF86MonBrightnessDown "exec <%= notify_and_exec(
+bindsym XF86MonBrightnessDown <%= notify_and_exec(
   "Decreasing brightness level",
   local!(:brightness_dec_cmd)
-) %>"
+) %>
 <% end %>
 
-# TODO
-# , ( (0, XF86.xF86XK_AudioPlay)
-#   , spawnAndNotify "playerctl play-pause"
-#                    "Toggling play/pause"
-#   , "Toggle play/pause state (in default media-player)"
-#   )
-# , ( (0, XF86.xF86XK_AudioPrev)
-#   , spawnAndNotify "playerctl previous"
-#                    "Playing previous track"
-#   , "Play previous track (in default media-player)"
-#   )
-# , ( (0, XF86.xF86XK_AudioNext)
-#   , spawnAndNotify "playerctl next"
-#                    "Playing next track"
-#   , "Play next track (in default media-player)"
-#   )
 #   -- ───────────────────────────────────────── keyboard •2.09.08• ──┤
 # , ( (metaMask, xK_F2)
 #   , spawnAndNotify "setxkbmap <\%= local! :kb_layout_main %>"
