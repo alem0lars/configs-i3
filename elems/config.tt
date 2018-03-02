@@ -50,8 +50,17 @@
     variable "pulseaudio.default_sink", as: :pa_sink
   end
 
-  def notify_and_exec(msg, cmd)
-    "exec notify-send '#{msg}'; exec #{cmd}"
+  def exec_and_notify(msg, cmd, notify_after: true)
+    msg = msg.call if msg.respond_to? :call
+
+    notify_cmd = "exec notify-send '#{msg}'"
+    exec_cmd = "exec #{cmd}"
+
+    if notify_after
+      [exec_cmd, notify_cmd]
+    else
+      [notify_cmd, exec_cmd]
+    end.join("; ")
   end
 
   def colorscheme_for_class(name)
@@ -150,7 +159,9 @@ assign [class="^Slack$"]                     → 6
 assign [class="^Thunderbird$"]               → 6
 assign [class="^Mumble$"]                    → 6
 assign [class="^Skype$"]                     → 6
+assign [class="^Transmission-gtk$"]          → 9
 assign [class="^VirtualBox"]                 → 10
+assign [class="^VMware Workstation$"]        → 10
 
 # ─────────────────────────────────────────────────────────────────────── Bar ──
 
@@ -415,17 +426,17 @@ bindsym XF86Calculator exec "<%= local! :calc_cmd %>"
 
 <% if local? :pa_sink %>
 
-bindsym XF86AudioLowerVolume <%= notify_and_exec(
+bindsym XF86AudioLowerVolume <%= exec_and_notify(
   "Decreasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} -5%"
 ) %>
 
-bindsym XF86AudioRaiseVolume <%= notify_and_exec(
+bindsym XF86AudioRaiseVolume <%= exec_and_notify(
   "Increasing audio volume",
   "pactl set-sink-volume #{local! :pa_sink} +5%"
 ) %>
 
-bindsym XF86AudioMute <%= notify_and_exec(
+bindsym XF86AudioMute <%= exec_and_notify(
   "Toggling audio mute",
   "pactl set-sink-mute #{local! :pa_sink} toggle"
 ) %>
@@ -434,17 +445,17 @@ bindsym XF86AudioMute <%= notify_and_exec(
 
 # ─────────────────────────────────────── MediaPlayer ← Special ← Keybindings ──
 
-bindsym XF86AudioPlay <%= notify_and_exec(
+bindsym XF86AudioPlay <%= exec_and_notify(
   "Toggling media play/pause",
   "playerctl play-pause"
 ) %>
 
-bindsym XF86AudioPrev <%= notify_and_exec(
+bindsym XF86AudioPrev <%= exec_and_notify(
   "Playing previous track",
   "playerctl previous"
 ) %>
 
-bindsym XF86AudioNext <%= notify_and_exec(
+bindsym XF86AudioNext <%= exec_and_notify(
   "Playing next track",
   "playerctl next"
 ) %>
@@ -453,7 +464,7 @@ bindsym XF86AudioNext <%= notify_and_exec(
 
 # Increase screen brightness
 <% if local? :brightness_inc_cmd %>
-bindsym XF86MonBrightnessUp <%= notify_and_exec(
+bindsym XF86MonBrightnessUp <%= exec_and_notify(
   "Increasing brightness level",
   local!(:brightness_inc_cmd)
 ) %>
@@ -461,7 +472,7 @@ bindsym XF86MonBrightnessUp <%= notify_and_exec(
 
 # Decrease screen brightness
 <% if local? :brightness_dec_cmd %>
-bindsym XF86MonBrightnessDown <%= notify_and_exec(
+bindsym XF86MonBrightnessDown <%= exec_and_notify(
   "Decreasing brightness level",
   local!(:brightness_dec_cmd)
 ) %>

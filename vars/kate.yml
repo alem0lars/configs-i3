@@ -11,8 +11,8 @@ i3:
   launcher_cmd: rofi -show run
   window_chooser_cmd: rofi -show window
   calc_cmd: toggle-window -c speedcrunch -n '^SpeedCrunch$'
-  brightness_inc_cmd: xbacklight -inc 10
-  brightness_dec_cmd: xbacklight -dec 10
+  brightness_inc_cmd: xbacklight -inc 1
+  brightness_dec_cmd: xbacklight -dec 1
 
 
 font:
@@ -21,6 +21,9 @@ font:
 
 pulseaudio:
   default_sink: 1
+
+features:
+  - bluetooth
 
 
 # vim: set filetype=eruby.yaml :

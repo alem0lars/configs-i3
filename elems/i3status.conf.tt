@@ -8,11 +8,17 @@
 general {
   colors = true
   interval = 1
+  color_good = "#66BB6A"
+  color_degraded = "#FFEB3B"
+  color_bad = "#F44336"
 }
 
 # ORDER ########################################################################
 
 order += "scratchpad_counter"
+<% if has_feature? :bluetooth %>
+order += "bluetooth"
+<% end %>
 order += "group system"
 order += "backlight"
 order += "battery_level"
@@ -22,6 +28,10 @@ order += "volume_status"
 order += "keyboard_layout"
 
 # WIDGETS PARAMETERS ###########################################################
+
+bluetooth {
+  format = ""
+}
 
 group system {
   cycle = 0
@@ -34,7 +44,11 @@ group system {
   format_button_closed = "⚛"
   format_button_open = "✗"
 
-  sysdata {}
+  sysdata {
+    mem_unit = 'dynamic'
+    cache_timeout = 1
+    format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temp %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
+  }
 
   whatismyip {
     format = "{icon} {ip} @ {country}"
@@ -80,11 +94,6 @@ keyboard_layout {
 }
 
 volume_status {
-  button_up = 4
-  button_down = 5
-  button_mute = 2
-
-  command = "pactl"
 
   format = "♪ {percentage}%"
   format_muted = "♪ ∅"
@@ -101,4 +110,28 @@ volume_status {
     (80, "#8B00FF"),
     (90, "#FFFFFF")
   ]
+}
+
+volume_status {
+  button_up = 4
+  button_down = 5
+  button_mute = 2
+
+  thresholds = [
+    (0, "#F1F8E9"),
+    (10, "#DCEDC8"),
+    (20, "#C5E1A5"),
+    (30, "#AED581"),
+    (40, "#D4E157"),
+    (50, "#CDDC39"),
+    (60, "#C0CA33"),
+    (70, "#FFB300"),
+    (80, "#FFA000"),
+    (90, "#E65100")
+  ]
+
+  command = "pactl"
+
+  format_muted = ""
+  format = " {percentage}%"
 }
