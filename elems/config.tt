@@ -164,6 +164,7 @@ assign [class="^Transmission-gtk$"]          → 9
 assign [class="^VirtualBox"]                 → 10
 assign [class="^VMware Workstation$"]        → 10
 assign [class="^Virt-manager$"]              → 10
+assign [class="^Qemu-system-arm$"]           → 10
 
 # ─────────────────────────────────────────────────────────────────────── Bar ──
 
