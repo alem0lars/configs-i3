@@ -16,7 +16,7 @@ general {
 # ORDER ########################################################################
 
 order += "scratchpad_counter"
-order += "system"
+order += "sysdata"
 order += "net_rate"
 order += "wifi"
 <% if has_feature? :bluetooth %>
@@ -31,7 +31,7 @@ order += "keyboard_layout"
 
 # WIDGETS PARAMETERS ###########################################################
 
-system {
+sysdata {
   mem_unit = 'dynamic'
   cache_timeout = 1
   format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temp %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
