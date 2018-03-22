@@ -16,10 +16,12 @@ general {
 # ORDER ########################################################################
 
 order += "scratchpad_counter"
+order += "system"
+order += "net_rate"
+order += "wifi"
 <% if has_feature? :bluetooth %>
 order += "bluetooth"
 <% end %>
-order += "group system"
 order += "backlight"
 order += "battery_level"
 order += "uptime"
@@ -29,41 +31,25 @@ order += "keyboard_layout"
 
 # WIDGETS PARAMETERS ###########################################################
 
-bluetooth {
-  format = ""
+system {
+  mem_unit = 'dynamic'
+  cache_timeout = 1
+  format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temp %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
 }
 
-group system {
-  cycle = 0
+net_rate {
+  hide_if_zero = True
 
-  click_mode = "all"
-  button_next = 1
-  button_prev = 3
+  format = "{interface} ⇅ {total}"
+  format_value = "{value:.1f} {unit}"
+}
 
-  format = "{output} {button}"
-  format_button_closed = "⚛"
-  format_button_open = "✗"
+wifi {
+  format = "{icon} {ssid} {bitrate} {signal_percent}|down"
+}
 
-  sysdata {
-    mem_unit = 'dynamic'
-    cache_timeout = 1
-    format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temp %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
-  }
-
-  whatismyip {
-    format = "{icon} {ip} @ {country}"
-  }
-
-  wifi {
-    format = "{icon} {ssid} {bitrate} {signal_percent}|down"
-  }
-
-  net_rate {
-    hide_if_zero = True
-
-    format = "{interface} ⇅ {total}"
-    format_value = "{value:.1f} {unit}"
-  }
+bluetooth {
+  format = ""
 }
 
 backlight {
