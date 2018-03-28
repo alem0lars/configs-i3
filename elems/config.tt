@@ -366,20 +366,18 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # Mode for window resizing
 mode "resize" {
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym semicolon resize grow width 10 px or 10 ppt
-
-  # same bindings, but for the arrow keys
-  bindsym Left  resize shrink width  10 px or 10 ppt
-  bindsym Down  resize grow   height 10 px or 10 ppt
-  bindsym Up    resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow   width  10 px or 10 ppt
+  # Shrink the window's width
+  bindsym h    resize shrink width 10 px or 10 ppt; mode "default"
+  bindsym Left resize shrink width 10 px or 10 ppt; mode "default"
+  # Grow the window's width
+  bindsym l     resize grow width 10 px or 10 ppt; mode "default"
+  bindsym Right resize grow width 10 px or 10 ppt; mode "default"
+  # Shrink the window's height
+  bindsym j    resize shrink height 10 px or 10 ppt; mode "default"
+  bindsym Down resize shrink height 10 px or 10 ppt; mode "default"
+  # Grow the window's height
+  bindsym k  resize grow height 10 px or 10 ppt; mode "default"
+  bindsym Up resize grow height 10 px or 10 ppt; mode "default"
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -390,10 +388,10 @@ bindsym $mod+r mode "resize"
 # Mode for advanced focus
 mode "focus" {
   # Focus the parent container
-  bindsym q focus parent
+  bindsym q focus parent; mode "default"
 
   # Focus the child container
-  bindsym e focus child
+  bindsym e focus child; mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
@@ -404,21 +402,21 @@ bindsym $mod+w mode "focus"
 mode "layout" {
   # Change container layout
   # => toggle tabbed
-  bindsym q layout tabbed
+  bindsym q layout tabbed; mode "default"
   # => toggle stacking
-  bindsym w layout stacking
+  bindsym w layout stacking; mode "default"
   # => toggle split vertical
-  bindsym e layout splitv
+  bindsym e layout splitv; mode "default"
   # => toggle split horizontal
-  bindsym r layout splith
+  bindsym r layout splith; mode "default"
   # => toggle all
-  bindsym d layout toggle all
+  bindsym d layout toggle all; mode "default"
 
   # Change orientation
   # => vertical
-  bindsym a split v
+  bindsym a split v; mode "default"
   # => horizontal
-  bindsym s split h
+  bindsym s split h; mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
