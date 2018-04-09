@@ -3,17 +3,59 @@
 hidpi: true
 
 i3:
-  mod_key: Mod4
-  terminal: openterm
-  terminal_no_multiplexer: openterm --no-tmux
-  startup_cmd: openterm --no-tmux --cmd startup-setup
-  xkill_cmd: xkill
-  launcher_cmd: rofi -show run
-  window_chooser_cmd: rofi -show window
-  calc_cmd: toggle-window -c speedcrunch -n '^SpeedCrunch$'
-  brightness_inc_cmd: xbacklight - 5
-  brightness_dec_cmd: xbacklight + 5
-
+  mod_key: "Mod4"
+  terminal: "openterm"
+  terminal_no_multiplexer: "openterm --no-tmux"
+  startup_cmd: "openterm --no-tmux --cmd startup-setup"
+  xkill_cmd: "xkill"
+  launcher_cmd: "rofi -show run"
+  window_chooser_cmd: "rofi -show window"
+  calc_cmd: "toggle-window -c speedcrunch -n '^SpeedCrunch$'"
+  brightness_inc_cmd: "xbacklight - 5"
+  brightness_dec_cmd: "xbacklight + 5"
+  assignments:
+    - criteria:
+        - class: "^Firefox$"
+        - class: "^chromium-browser-chromium$"
+        - class: "^inoreader"
+      workspace:
+        number: 1
+    - criteria:
+        - class: "^Dynalist"
+        - class: "^Todoist"
+        - class: "^notion"
+        - class: "^toggl"
+        - class: "^trello"
+      workspace:
+        number: 5
+    - criteria:
+        - class: "^Caprine"
+        - class: "^Mailspring$"
+        - class: "^Mumble$"
+        - class: "^Skype$"
+        - class: "^Slack$"
+        - class: "^TelegramDesktop$"
+        - class: "^Thunderbird$"
+        - class: "^skypeforlinux$"
+        - class: "^wavebox$"
+        - class: "^whatsapp"
+      workspace:
+        number: 6
+    - criteria:
+        - class: "^Spotify$"
+      workspace:
+        number: 7
+    - criteria:
+        - class: "^Transmission-gtk$"
+      workspace:
+        number: 9
+    - criteria:
+        - class: "^Qemu-system-arm$"
+        - class: "^VMware Workstation$"
+        - class: "^Virt-manager$"
+        - class: "^VirtualBox"
+      workspace:
+        number: 10
 
 font:
   name: Hack
@@ -24,6 +66,7 @@ pulseaudio:
 
 features:
   - bluetooth
+  - temperature
 
 
 # vim: set filetype=eruby.yaml :

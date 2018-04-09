@@ -34,7 +34,7 @@ order += "keyboard_layout"
 sysdata {
   mem_unit = 'dynamic'
   cache_timeout = 1
-  format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temp %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
+  format = " [\?color=cpu {cpu_usage}%]<% if has_feature? :temperature %>  [\?color=temp {cpu_temp} {temp_unit}]<% end %>"
 }
 
 net_rate {
