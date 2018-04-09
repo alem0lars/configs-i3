@@ -154,6 +154,7 @@ assign [class="^Dynalist"]                   → 5
 assign [class="^toggl"]                      → 5
 assign [class="^notion"]                     → 5
 assign [class="^Todoist"]                    → 5
+assign [class="^wavebox$"]                   → 6
 assign [class="^whatsapp"]                   → 6
 assign [class="^TelegramDesktop$"]           → 6
 assign [class="^Caprine"]                    → 6
