@@ -13,6 +13,18 @@ i3:
   calc_cmd: "toggle-window -c speedcrunch -n '^SpeedCrunch$'"
   brightness_inc_cmd: "xbacklight + 5"
   brightness_dec_cmd: "xbacklight - 5"
+  floats:
+    - criteria:
+        - class: "^Pavucontrol$"
+        - class: "^copyq$"
+        - class: "^SpeedCrunch"
+        - class: "^Toggl Desktop$"
+        - class: "^Mediainfo-gui$"
+        - class: "^Vmware-modconfig$"
+    - criteria:
+        - class: "^DevDocs$"
+      width:  1152
+      height: 648
   assignments:
     - criteria:
         - class: "^Firefox$"

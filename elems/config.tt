@@ -44,6 +44,7 @@
     variable "i3.brightness_inc_cmd", as: :brightness_inc_cmd
     variable "i3.brightness_dec_cmd", as: :brightness_dec_cmd
     variable "i3.assignments", as: :assignments
+    variable "i3.floats", as: :floats
 
     variable "font.name", as: :font_name
     variable "font.size", as: :font_size
@@ -113,6 +114,18 @@
 
     output
   end
+
+  def format_float(width, height)
+    output = []
+
+    output << "floating enable"
+
+    if !width.nil? && !height.nil?
+      output << "resize set #{scale width} #{scale height}"
+    end
+
+    output.join ", "
+  end
 %>
 # ─────────────────────────────────────────────────────────────────────────────┘
 
@@ -168,12 +181,11 @@ focus_on_window_activation smart
 # ─────────────────────────────────────────────────────────────────── X rules ──
 
 # Set windows that should be floating by default
-for_window [class="^Pavucontrol$"] floating enable
-for_window [class="^copyq$"]       floating enable
-for_window [class="^SpeedCrunch"]  floating enable
-for_window [class="^DevDocs$"]     floating enable, resize set <%= scale 1152 %> <%= scale 648 %>
-for_window [class="^Toggl Desktop$"] floating enable
-for_window [class="^Mediainfo-gui$"] floating enable
+<% local!(:floats).each do |f| %>
+  <% f[:criteria].each do |c| %>
+for_window [<%= format_criteria c %>] <%= format_float(f[:width], f[:height]) %>
+  <% end %>
+<% end %>
 
 # Make all floating windows centered
 for_window [class=".*"] move position center
