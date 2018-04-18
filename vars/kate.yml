@@ -6,7 +6,7 @@ i3:
   mod_key: "Mod4"
   terminal: "openterm"
   terminal_no_multiplexer: "openterm --no-tmux"
-  startup_cmd: "openterm --no-tmux --cmd startup-setup"
+  startup_cmd: "openterm --no-tmux --cmd 'startup-setup; echo Hit Ctrl+D to exit; read'"
   xkill_cmd: "xkill"
   launcher_cmd: "rofi -show run"
   window_chooser_cmd: "rofi -show window"
@@ -51,6 +51,7 @@ i3:
         - class: "^skypeforlinux$"
         - class: "^wavebox$"
         - class: "^whatsapp"
+        - class: "^chatty-Chatty$"
       workspace:
         number: 6
     - criteria:
