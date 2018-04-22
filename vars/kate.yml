@@ -52,6 +52,7 @@ i3:
         - class: "^wavebox$"
         - class: "^whatsapp"
         - class: "^chatty-Chatty$"
+        - class: "^TeamSpeak"
       workspace:
         number: 6
     - criteria:
