@@ -21,6 +21,7 @@ i3:
         - class: "^Toggl Desktop$"
         - class: "^Mediainfo-gui$"
         - class: "^Vmware-modconfig$"
+        - class: "^Syncthing GTK$"
     - criteria:
         - class: "^DevDocs$"
       width:  1152
