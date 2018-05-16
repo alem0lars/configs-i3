@@ -28,22 +28,22 @@ i3:
       height: 648
   assignments:
     - criteria:
-        - class: "^Firefox$"
-        - class: "^chromium-browser-chromium$"
+        - class: "^[Ff]irefox$"
+        - class: "^[Cc]hromium-browser-chromium$"
       workspace:
         number: 1
     - criteria:
-        - class: "^inoreader"
-        - class: "^Feedreader$"
-        - class: "^calibre-gui$"
+        - class: "^[Ii]noreader"
+        - class: "^[Ff]eedreader$"
+        - class: "^[Cc]alibre-gui$"
       workspace:
         number: 4
     - criteria:
-        - class: "^Dynalist"
-        - class: "^Todoist"
-        - class: "^notion"
-        - class: "^toggl"
-        - class: "^trello"
+        - class: "^[Dd]ynalist"
+        - class: "^[Tt]odoist"
+        - class: "^[Nn]otion"
+        - class: "^[Tt]oggl"
+        - class: "^[Tt]rello"
       workspace:
         number: 5
     - criteria:
