@@ -30,9 +30,14 @@ i3:
     - criteria:
         - class: "^Firefox$"
         - class: "^chromium-browser-chromium$"
-        - class: "^inoreader"
       workspace:
         number: 1
+    - criteria:
+        - class: "^inoreader"
+        - class: "^Feedreader$"
+        - class: "^calibre-gui$"
+      workspace:
+        number: 4
     - criteria:
         - class: "^Dynalist"
         - class: "^Todoist"
@@ -73,8 +78,8 @@ i3:
         number: 10
 
 font:
-  name: Hack
-  size: 8
+  name: Roboto
+  size: 7
 
 pulseaudio:
   default_sink: 1
