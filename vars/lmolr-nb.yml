@@ -44,9 +44,9 @@ i3:
         number: 3
     
     # Code.
-    - criteria:
-      workspace:
-        number: 4
+    #- criteria:
+    #  workspace:
+    #    number: 4
     
     # Terminals.
     - criteria:
@@ -55,9 +55,9 @@ i3:
         number: 5
     
     # Filesystem.
-    - criteria:
-      workspace:
-        number: 6
+    #- criteria:
+    #  workspace:
+    #    number: 6
     
     # Background.
     - criteria:
