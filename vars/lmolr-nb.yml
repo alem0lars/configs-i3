@@ -1,0 +1,81 @@
+# => inherits: generic, with-colorscheme-default <= #
+
+hidpi: true
+
+i3:
+  mod_key: "Mod4"
+  terminal: "openterm"
+  terminal_no_multiplexer: "openterm --no-tmux"
+  startup_cmd: "openterm --no-tmux --cmd 'startup-setup; echo Hit Ctrl+D to exit; read'"
+  xkill_cmd: "xkill"
+  launcher_cmd: "rofi -show run"
+  window_chooser_cmd: "rofi -show window"
+  calc_cmd: "toggle-window -c speedcrunch -n '^SpeedCrunch$'"
+  brightness_inc_cmd: "xbacklight + 5"
+  brightness_dec_cmd: "xbacklight - 5"
+  floats:
+    - criteria:
+        - class: "^Pavucontrol$"
+        - class: "^copyq$"
+  assignments:
+    
+    # Organization.
+    - criteria:
+        - class: "^[Tt]rello"
+      workspace:
+        number: 1
+    
+    # Browse.
+    - criteria:
+        - class: "^[Ff]irefox$"
+        - class: "^[Cc]hromium-browser-chromium$"
+      workspace:
+        number: 2
+    
+    # Communication.
+    - criteria:
+        - class: "^Mumble$"
+        - class: "^Skype$"
+        - class: "^Slack$"
+        - class: "^TelegramDesktop$"
+        - class: "^skypeforlinux$"
+        - class: "^whatsapp"
+      workspace:
+        number: 3
+    
+    # Code.
+    - criteria:
+      workspace:
+        number: 4
+    
+    # Terminals.
+    - criteria:
+        - class: "^urxvtc?$"
+      workspace:
+        number: 5
+    
+    # Filesystem.
+    - criteria:
+      workspace:
+        number: 6
+    
+    # Background.
+    - criteria:
+        - class: "^VirtualBox"
+        - class: "^Spotify$"
+      workspace:
+        number: 7
+
+font:
+  name: Roboto
+  size: 7
+
+pulseaudio:
+  default_sink: 1
+
+features:
+  - bluetooth
+  - temperature
+
+
+# vim: set filetype=eruby.yaml :
