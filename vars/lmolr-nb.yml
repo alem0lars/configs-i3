@@ -27,19 +27,14 @@ i3:
     
     # Browse.
     - criteria:
-        - class: "^[Ff]irefox$"
         - class: "^[Cc]hromium-browser-chromium$"
       workspace:
         number: 2
     
     # Communication.
     - criteria:
-        - class: "^Mumble$"
-        - class: "^Skype$"
-        - class: "^Slack$"
-        - class: "^TelegramDesktop$"
+        - class: "^[Ff]ranz$"
         - class: "^skypeforlinux$"
-        - class: "^whatsapp"
       workspace:
         number: 3
     
@@ -67,8 +62,8 @@ i3:
         number: 7
 
 font:
-  name: Roboto
-  size: 7
+  name: Noto
+  size: 9
 
 pulseaudio:
   default_sink: 1
