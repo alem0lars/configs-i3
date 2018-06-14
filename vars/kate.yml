@@ -35,7 +35,7 @@ i3:
     - criteria:
         - class: "^[Ii]noreader"
         - class: "^[Ff]eedreader$"
-        - class: "^[Cc]alibre-gui$"
+        - class: "^[Cc]alibre(-gui)?$"
       workspace:
         number: 4
     - criteria:
@@ -43,7 +43,7 @@ i3:
         - class: "^[Tt]odoist"
         - class: "^[Nn]otion"
         - class: "^[Tt]oggl"
-        - class: "^[Tt]rello"
+        - class: "[Tt]rello$"
       workspace:
         number: 5
     - criteria:
@@ -56,7 +56,7 @@ i3:
         - class: "^Thunderbird$"
         - class: "^skypeforlinux$"
         - class: "^wavebox$"
-        - class: "^whatsapp"
+        - class: "^whats[-]?app"
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
       workspace:
