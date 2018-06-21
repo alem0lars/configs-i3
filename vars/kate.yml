@@ -23,6 +23,7 @@ i3:
         - class: "^Vmware-modconfig$"
     - criteria:
         - class: "^DevDocs$"
+        - class: "^[Zz]eal$"
         - class: "^Syncthing GTK$"
       width:  1152
       height: 648
