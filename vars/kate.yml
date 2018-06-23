@@ -60,6 +60,7 @@ i3:
         - class: "^whats[-]?app"
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
+        - class: "^Hexchat"
       workspace:
         number: 6
     - criteria:
