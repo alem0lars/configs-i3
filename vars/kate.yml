@@ -52,19 +52,19 @@ i3:
         - class: "^Mailspring$"
         - class: "^Mumble$"
         - class: "^Skype$"
-        - class: "^Slack$"
+        - class: "[Ss]lack$"
         - class: "^TelegramDesktop$"
         - class: "^Thunderbird$"
         - class: "^skypeforlinux$"
         - class: "^wavebox$"
-        - class: "^whats[-]?app"
+        - class: "^[Ww]hats[-]?[Aa]pp"
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
         - class: "^Hexchat"
       workspace:
         number: 6
     - criteria:
-        - class: "^Spotify$"
+        - class: "^[Ss]potify$"
       workspace:
         number: 7
     - criteria:
