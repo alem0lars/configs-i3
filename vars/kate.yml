@@ -23,6 +23,7 @@ i3:
         - class: "^Vmware-modconfig$"
     - criteria:
         - class: "^DevDocs$"
+        - class: "^[Zz]eal$"
         - class: "^Syncthing GTK$"
       width:  1152
       height: 648
@@ -35,7 +36,7 @@ i3:
     - criteria:
         - class: "^[Ii]noreader"
         - class: "^[Ff]eedreader$"
-        - class: "^[Cc]alibre-gui$"
+        - class: "^[Cc]alibre(-gui)?$"
       workspace:
         number: 4
     - criteria:
@@ -43,7 +44,7 @@ i3:
         - class: "^[Tt]odoist"
         - class: "^[Nn]otion"
         - class: "^[Tt]oggl"
-        - class: "^[Tt]rello"
+        - class: "[Tt]rello$"
       workspace:
         number: 5
     - criteria:
@@ -51,18 +52,19 @@ i3:
         - class: "^Mailspring$"
         - class: "^Mumble$"
         - class: "^Skype$"
-        - class: "^Slack$"
+        - class: "[Ss]lack$"
         - class: "^TelegramDesktop$"
         - class: "^Thunderbird$"
         - class: "^skypeforlinux$"
         - class: "^wavebox$"
-        - class: "^whatsapp"
+        - class: "^[Ww]hats[-]?[Aa]pp"
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
+        - class: "^Hexchat"
       workspace:
         number: 6
     - criteria:
-        - class: "^Spotify$"
+        - class: "^[Ss]potify$"
       workspace:
         number: 7
     - criteria:
