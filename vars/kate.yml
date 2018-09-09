@@ -18,9 +18,10 @@ i3:
         - class: "^Pavucontrol$"
         - class: "^copyq$"
         - class: "^SpeedCrunch"
-        - class: "^Toggl Desktop$"
         - class: "^Mediainfo-gui$"
         - class: "^Vmware-modconfig$"
+        - class: "^Toggl Desktop$"
+        - class: "^crx_emhlbipdbnglohkhcmimglnngjlfoehc$" # Toggl Web App
     - criteria:
         - class: "^DevDocs$"
         - class: "^[Zz]eal$"
@@ -31,6 +32,7 @@ i3:
     - criteria:
         - class: "^[Ff]irefox$"
         - class: "^[Cc]hromium-browser-chromium$"
+        - class: "^crx_eigkhialgobgcbmbliipenfhchjnnaio$" # WordReference Web App
       workspace:
         number: 1
     - criteria:
@@ -42,9 +44,13 @@ i3:
     - criteria:
         - class: "^[Dd]ynalist"
         - class: "^[Tt]odoist"
-        - class: "^[Nn]otion"
         - class: "^[Tt]oggl"
+        - class: "^[Nn]otion"
+        - class: "^crx_iclmfhiodeokmeckoamkbmlinkeekdnk$" # Notion Web App
         - class: "[Tt]rello$"
+        - class: "^crx_jijnmpkkfkjaihbhffejemnpbbglahim$" # Trello Web App
+        - class: "^crx_oihmkpogbcncclhnjdcnbhpgmidhcoed$" # Todoist Web App
+        - class: "^crx_kjbdgfilnfhdoflbpgamdcdgpehopbep$" # Google Calendar Web App
       workspace:
         number: 5
     - criteria:
@@ -52,15 +58,20 @@ i3:
         - class: "^Mailspring$"
         - class: "^Mumble$"
         - class: "^Skype$"
-        - class: "[Ss]lack$"
         - class: "^TelegramDesktop$"
         - class: "^Thunderbird$"
         - class: "^skypeforlinux$"
         - class: "^wavebox$"
-        - class: "^[Ww]hats[-]?[Aa]pp"
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
         - class: "^Hexchat"
+        - class: "[Ss]lack$"
+        - class: "^crx_kighnajjpghcfnmghoclecacjahnaeia$" # Slack Web App
+        - class: "^[Ww]hats[-]?[Aa]pp"
+        - class: "^crx_hnpfjngllnobngcgfapefoaidbinmjnm$" # WhatsApp Web App
+        - class: "^crx_bmbniebmoflhomonmkjbhjdafagjnlpl$" # Twitter Web App
+        - class: "^crx_celnaknmndcdcjcagffhbhciignkeokb$" # Facebook Web App
+        - class: "^crx_kmhopmchchfpfdcdjodmpfaaphdclmlj$" # GMail Web App
       workspace:
         number: 6
     - criteria:
