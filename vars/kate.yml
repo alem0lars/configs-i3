@@ -65,6 +65,7 @@ i3:
         - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
         - class: "^Hexchat"
+        - class: "^[Dd]iscord$"
         - class: "[Ss]lack$"
         - class: "^crx_kighnajjpghcfnmghoclecacjahnaeia$" # Slack Web App
         - class: "^[Ww]hats[-]?[Aa]pp"
