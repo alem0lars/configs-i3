@@ -1,9 +1,41 @@
-# i3status configuration file.
+# ─────────────────────────────────────────────────────────────────────────────┐
+#                                                                              │
+# Name:    elems/config.tt                                                     │
+# Summary: i3status configuration file.                                        │
+# Authors:                                                                     │
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              │
+#                                                                              │
+# Project:                                                                     │
+#   - Homepage:        https://github.com/alem0lars/configs-i3                 │
+#   - Getting started: see README.md in the project root folder                │
+#                                                                              │
+# License: Apache v2.0 (see below)                                             │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+#                                                                              │
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  │
+# license agreements.  See the NOTICE file distributed with this work for      │
+# additional information regarding copyright ownership. The ASF licenses this  │
+# file to you under the Apache License, Version 2.0 (the "License"); you may   │
+# not use this file except in compliance with the License.                     │
+# You may obtain a copy of the License at                                      │
+#                                                                              │
+#   http://www.apache.org/licenses/LICENSE-2.0                                 │
+#                                                                              │
+# Unless required by applicable law or agreed to in writing, software          │
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    │
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             │
+# See the License for the specific language governing permissions and          │
+# limitations under the License.                                               │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+<%
+  define_locals do
+    variable "calendar_cmd", as: :calendar_cmd
+  end
+%>
+# ─────────────────────────────────────────────────────────────────────────────┘
 
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
 
 general {
   colors = true
@@ -13,7 +45,7 @@ general {
   color_bad = "#F44336"
 }
 
-# ORDER ########################################################################
+# ───────────────────────────────────────────────────────────────────── ORDER ──
 
 order += "scratchpad_counter"
 order += "sysdata"
@@ -29,7 +61,7 @@ order += "clock"
 order += "volume_status"
 order += "keyboard_layout"
 
-# WIDGETS PARAMETERS ###########################################################
+# ──────────────────────────────────────────────────────── WIDGETS PARAMETERS ──
 
 sysdata {
   mem_unit = 'dynamic'
@@ -71,8 +103,11 @@ uptime {
 
 clock {
   cycle = 10
+
   format = "{Local}"
   format_time = "%Y-%m-%d %H:%M:%S"
+
+  on_click 1 = "exec <%= local! :calendar_cmd! %>"
 }
 
 keyboard_layout {
@@ -121,3 +156,6 @@ volume_status {
   format_muted = ""
   format = " {percentage}%"
 }
+
+
+# vim: set filetype=eruby.conf :

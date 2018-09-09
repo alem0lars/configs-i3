@@ -13,6 +13,7 @@ i3:
   calc_cmd: "toggle-window -c speedcrunch -n '^SpeedCrunch$'"
   brightness_inc_cmd: "xbacklight + 5"
   brightness_dec_cmd: "xbacklight - 5"
+  calendar_cmd: "gsimplecal"
   floats:
     - criteria:
         - class: "^Pavucontrol$"
