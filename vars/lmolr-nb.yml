@@ -17,6 +17,7 @@ i3:
     - criteria:
         - class: "^Pavucontrol$"
         - class: "^copyq$"
+        - class: "^jetbrains-toolbox$"
   assignments:
     
     # Organization.
@@ -27,7 +28,7 @@ i3:
     
     # Browse.
     - criteria:
-        - class: "^[Cc]hromium-browser-chromium$"
+        - class: "^[Cc]hromium$"
       workspace:
         number: 2
     
@@ -39,27 +40,36 @@ i3:
         number: 3
     
     # Code.
-    #- criteria:
-    #  workspace:
-    #    number: 4
+    - criteria:
+        - class: "^[Aa]tom$"
+        - class: "^[Ss]ubl3$"
+      workspace:
+        number: 4
     
     # Terminals.
     - criteria:
-        - class: "^urxvtc?$"
+        - class: "^[Uu][Rr]xvt$"
       workspace:
         number: 5
     
     # Filesystem.
-    #- criteria:
-    #  workspace:
-    #    number: 6
+    - criteria:
+        - class: "^[Nn]emo$"
+      workspace:
+        number: 6
+
+    # Utils.
+    - criteria:
+        - class: "^[Gg]it[Kk]raken$"
+      workspace:
+        number: 6
     
     # Background.
     - criteria:
         - class: "^VirtualBox"
         - class: "^Spotify$"
       workspace:
-        number: 7
+        number: 9
 
 font:
   name: Noto
