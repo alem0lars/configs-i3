@@ -67,7 +67,7 @@ i3:
     # Background.
     - criteria:
         - class: "^VirtualBox"
-        - class: "^Spotify$"
+        - class: "^[Ss]potify$"
       workspace:
         number: 9
 
