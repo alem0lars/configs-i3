@@ -31,7 +31,7 @@
 # ─────────────────────────────────────────────────────────────────────────────┤
 <%
   define_locals do
-    variable "calendar_cmd", as: :calendar_cmd
+    variable "i3.calendar_cmd", as: :calendar_cmd
   end
 %>
 # ─────────────────────────────────────────────────────────────────────────────┘
@@ -107,7 +107,7 @@ clock {
   format = "{Local}"
   format_time = "%Y-%m-%d %H:%M:%S"
 
-  on_click 1 = "exec <%= local! :calendar_cmd! %>"
+  on_click 1 = "exec <%= local! :calendar_cmd %>"
 }
 
 keyboard_layout {

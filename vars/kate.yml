@@ -1,5 +1,6 @@
 # => inherits: generic, with-colorscheme-default <= #
 
+
 hidpi: true
 
 i3:
@@ -23,6 +24,7 @@ i3:
         - class: "^Vmware-modconfig$"
         - class: "^Toggl Desktop$"
         - class: "^crx_emhlbipdbnglohkhcmimglnngjlfoehc$" # Toggl Web App
+        - class: "^[Nn]m-connection-editor$"
     - criteria:
         - class: "^DevDocs$"
         - class: "^[Zz]eal$"
@@ -93,7 +95,7 @@ i3:
         number: 10
 
 font:
-  name: Roboto
+  name: Fira Sans Light
   size: 7
 
 pulseaudio:

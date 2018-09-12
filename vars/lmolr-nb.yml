@@ -19,39 +19,39 @@ i3:
         - class: "^copyq$"
         - class: "^jetbrains-toolbox$"
   assignments:
-    
+
     # Organization.
     - criteria:
         - class: "^[Tt]rello"
       workspace:
         number: 1
-    
+
     # Browse.
     - criteria:
         - class: "^[Cc]hromium$"
       workspace:
         number: 2
-    
+
     # Communication.
     - criteria:
         - class: "^[Ff]ranz$"
         - class: "^skypeforlinux$"
       workspace:
         number: 3
-    
+
     # Code.
     - criteria:
         - class: "^[Aa]tom$"
         - class: "^[Ss]ubl3$"
       workspace:
         number: 4
-    
+
     # Terminals.
     - criteria:
         - class: "^[Uu][Rr]xvt$"
       workspace:
         number: 5
-    
+
     # Filesystem.
     - criteria:
         - class: "^[Nn]emo$"
@@ -63,7 +63,7 @@ i3:
         - class: "^[Gg]it[Kk]raken$"
       workspace:
         number: 6
-    
+
     # Background.
     - criteria:
         - class: "^VirtualBox"
