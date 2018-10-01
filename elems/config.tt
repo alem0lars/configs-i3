@@ -393,6 +393,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Run chip `i3-swap-workspace` to save&restore the current workspace
+bindsym $mod+Control+grave exec 'i3-swap-workspace'
+
 # Mode for window resizing
 mode "resize" {
   # Shrink the window's width
