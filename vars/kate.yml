@@ -15,6 +15,8 @@ i3:
   brightness_inc_cmd: "xbacklight + 5"
   brightness_dec_cmd: "xbacklight - 5"
   calendar_cmd: "gsimplecal"
+  screenshot_to_clipboard_cmd: "maim -s | xclip -selection clipboard -t image/png"
+  screenshot_to_file_cmd: "maim -s /data/TMP/screenshot-$(date +'%Y-%M-%d,%T.%3N').png"
   floats:
     - criteria:
         - class: "^Pavucontrol$"

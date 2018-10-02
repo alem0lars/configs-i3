@@ -45,6 +45,8 @@
     variable "i3.brightness_dec_cmd", as: :brightness_dec_cmd
     variable "i3.assignments", as: :assignments
     variable "i3.floats", as: :floats
+    variable "i3.screenshot_to_clipboard_cmd", as: :screenshot_to_clipboard_cmd
+    variable "i3.screenshot_to_file_cmd", as: :screenshot_to_file_cmd
 
     variable "font.name", as: :font_name
     variable "font.size", as: :font_size
@@ -461,6 +463,13 @@ bindsym $mod+d mode "layout"
 
 <% if local? :calc_cmd %>
 bindsym XF86Calculator exec "<%= local! :calc_cmd %>"
+<% end %>
+
+# ──────────────────────────────────────── Screenshot ← Special ← Keybindings ──
+
+<% if local? :calc_cmd %>
+bindsym $mod+F1       exec "<%= local! :screenshot_to_file_cmd %>"
+bindsym $mod+Shift+F1 exec "<%= local! :screenshot_to_clipboard_cmd %>"
 <% end %>
 
 # ───────────────────────────────────────────── Audio ← Special ← Keybindings ──
