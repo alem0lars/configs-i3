@@ -51,11 +51,7 @@ i3:
         - class: "^[Tt]odoist"
         - class: "^[Tt]oggl"
         - class: "^[Nn]otion"
-        - class: "^crx_iclmfhiodeokmeckoamkbmlinkeekdnk$" # Notion Web App
         - class: "[Tt]rello$"
-        - class: "^crx_jijnmpkkfkjaihbhffejemnpbbglahim$" # Trello Web App
-        - class: "^crx_oihmkpogbcncclhnjdcnbhpgmidhcoed$" # Todoist Web App
-        - class: "^crx_kjbdgfilnfhdoflbpgamdcdgpehopbep$" # Google Calendar Web App
       workspace:
         number: 5
     - criteria:
@@ -72,12 +68,7 @@ i3:
         - class: "^Hexchat"
         - class: "^[Dd]iscord$"
         - class: "[Ss]lack$"
-        - class: "^crx_kighnajjpghcfnmghoclecacjahnaeia$" # Slack Web App
         - class: "^[Ww]hats[-]?[Aa]pp"
-        - class: "^crx_hnpfjngllnobngcgfapefoaidbinmjnm$" # WhatsApp Web App
-        - class: "^crx_bmbniebmoflhomonmkjbhjdafagjnlpl$" # Twitter Web App
-        - class: "^crx_celnaknmndcdcjcagffhbhciignkeokb$" # Facebook Web App
-        - class: "^crx_kmhopmchchfpfdcdjodmpfaaphdclmlj$" # GMail Web App
       workspace:
         number: 6
     - criteria:

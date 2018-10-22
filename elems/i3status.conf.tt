@@ -119,27 +119,12 @@ volume_status {
   format = "♪ {percentage}%"
   format_muted = "♪ ∅"
 
-  thresholds = [
-    (0, "#FF0000"),
-    (10, "#E2571E"),
-    (20, "#FF7F00"),
-    (30, "#FFFF00"),
-    (40, "#00FF00"),
-    (50, "#96BF33"),
-    (60, "#0000FF"),
-    (70, "#4B0082"),
-    (80, "#8B00FF"),
-    (90, "#FFFFFF")
-  ]
-}
-
-volume_status {
   button_up = 4
   button_down = 5
   button_mute = 2
 
   thresholds = [
-    (0, "#F1F8E9"),
+    (0,  "#F1F8E9"),
     (10, "#DCEDC8"),
     (20, "#C5E1A5"),
     (30, "#AED581"),
@@ -152,9 +137,6 @@ volume_status {
   ]
 
   command = "pactl"
-
-  format_muted = ""
-  format = " {percentage}%"
 }
 
 
