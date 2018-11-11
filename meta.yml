@@ -6,7 +6,7 @@ elems:
 
   - src:  ^(i3status.conf)$
     dst:  /etc/i3status.conf
-    only: f?i3
+    only: f?i3status
 
 
 # vim: set filetype=eruby.yaml :
