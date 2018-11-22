@@ -1,4 +1,4 @@
-# => inherits: generic, with-colorscheme-default <= #
+# => inherits: generic, with-i3status, with-colorscheme-default <= #
 
 hidpi: true
 
@@ -13,16 +13,22 @@ i3:
   calc_cmd: "toggle-window -c speedcrunch -n '^SpeedCrunch$'"
   brightness_inc_cmd: "xbacklight + 5"
   brightness_dec_cmd: "xbacklight - 5"
+  calendar_cmd: "gsimplecal"
+  screenshot_to_clipboard_cmd: "maim -s | xclip -selection clipboard -t image/png"
+  screenshot_to_file_cmd: "maim -s /data/tmp/screenshot-$(date +'%Y-%M-%d,%T.%3N').png"
   floats:
     - criteria:
         - class: "^Pavucontrol$"
         - class: "^copyq$"
         - class: "^jetbrains-toolbox$"
+      width:  1152
+      height: 648
   assignments:
 
     # Organization.
     - criteria:
-        - class: "^[Tt]rello"
+        - class: "^crx_fefpdcphckgigifodmbncgloiabmapic$" # Trello Web App
+        - class: "^crx_kjbdgfilnfhdoflbpgamdcdgpehopbep$" # Google Calendar Web App
       workspace:
         number: 1
 
@@ -36,6 +42,8 @@ i3:
     - criteria:
         - class: "^[Ff]ranz$"
         - class: "^skypeforlinux$"
+        - class: "^crx_kmhopmchchfpfdcdjodmpfaaphdclmlj$" # GMail Web App
+        - class: "^crx_odadmohlkalmmfdgjdlbjdpoekbijhcc$" # Hangouts Web App
       workspace:
         number: 3
 
@@ -62,12 +70,12 @@ i3:
     - criteria:
         - class: "^[Gg]it[Kk]raken$"
       workspace:
-        number: 6
+        number: 7
 
     # Background.
     - criteria:
         - class: "^VirtualBox"
-        - class: "^Spotify$"
+        - class: "^[Ss]potify$"
       workspace:
         number: 9
 
