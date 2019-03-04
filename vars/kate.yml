@@ -25,8 +25,9 @@ i3:
         - class: "^Mediainfo-gui$"
         - class: "^Vmware-modconfig$"
         - class: "^Toggl Desktop$"
-        - class: "^crx_emhlbipdbnglohkhcmimglnngjlfoehc$" # Toggl Web App
         - class: "^[Nn]m-connection-editor$"
+        - class: "^[Bb]lueman-manager$"
+        - class: "^JDownloader$"
     - criteria:
         - class: "^DevDocs$"
         - class: "^[Zz]eal$"
@@ -37,7 +38,6 @@ i3:
     - criteria:
         - class: "^[Ff]irefox$"
         - class: "^[Cc]hromium-browser-chromium$"
-        - class: "^crx_eigkhialgobgcbmbliipenfhchjnnaio$" # WordReference Web App
       workspace:
         number: 1
     - criteria:
@@ -55,20 +55,13 @@ i3:
       workspace:
         number: 5
     - criteria:
-        - class: "^Caprine"
-        - class: "^Mailspring$"
         - class: "^Mumble$"
-        - class: "^Skype$"
         - class: "^TelegramDesktop$"
-        - class: "^Thunderbird$"
         - class: "^skypeforlinux$"
-        - class: "^wavebox$"
-        - class: "^chatty-Chatty$"
         - class: "^TeamSpeak"
         - class: "^Hexchat"
         - class: "^[Dd]iscord$"
         - class: "[Ss]lack$"
-        - class: "^[Ww]hats[-]?[Aa]pp"
       workspace:
         number: 6
     - criteria:
